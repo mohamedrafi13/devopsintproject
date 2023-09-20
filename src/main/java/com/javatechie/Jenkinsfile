@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Sonarquality Status') {
+
+            agent {
+                docker {
+                    image 'maven'
+                }
+            }
+            steps {
+                script {
+                    withSonarQubeEnv(credentialsId: 'deekshithSN') {
+                    sh 'mvn clean package sonar:sonar'    
+                }
+                }
+            }
+        }
+    }
+}
