@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Git Checkout'){
+            
+            steps{
+                
+                script{
+                    
+                    git branch: 'main', url: 'https://github.com/mohamedrafi13/devopsintproject.git'
+                }
+            }
+        }
+        stage('sonar quality check') {
+            agent {
+                docker {
+                    image 'maven'
+                }
+            }
+            steps{
+                script{
+                    withSonarQubeEnv(credentialsId: '') {
+                        'mvn clean package sonar:sonar'
+                    }
+                }
+            }
+        }
+    }
+}
