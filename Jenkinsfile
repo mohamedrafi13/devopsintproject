@@ -19,7 +19,7 @@ pipeline {
                     image 'maven'
                 }
             }
-     steps{
+            steps{
                 script{
                     withSonarQubeEnv(credentialsId: 'deekshithSN') {
                         'mvn clean package sonar:sonar'
@@ -34,12 +34,12 @@ pipeline {
                 }
             }
         }
-     stage('Docker Build & Push to Docker Repo') {
+/*     stage('Docker Build & Push to Docker Repo') {
             steps{
                 script{
                     
                 }
             }
-        }
+        } */ 
     }
 }
