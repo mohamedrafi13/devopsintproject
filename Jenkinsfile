@@ -39,10 +39,10 @@ pipeline {
      stage('Docker Build & Push to Docker Repo') {
             steps{
                 script{
-                    withCredentials([string(credentialsId: 'nexus-credential', variable: 'nexus-credential-var')]) {
+                    withCredentials([string(credentialsId: 'nexuscredential', variable: 'nexuscredvar')]) {
                     sh '''
                     docker build -t 172.31.1.117:8083/springapp:${version} .
-                    docker login -u admin -p $nexus-credential-var 172.31.1.117:8083
+                    docker login -u admin -p $nexuscredvar 172.31.1.117:8083
                     docker push 172.31.1.117:8083/springapp:${version}
                     docker rmi 172.31.1.117:8083/springapp:${version}
                     '''
