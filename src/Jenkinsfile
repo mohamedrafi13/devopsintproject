@@ -34,12 +34,12 @@ pipeline {
                 }
             }
         }
-      stage('Docker Build & Push to Docker Repo') {
+/*      stage('Docker Build & Push to Docker Repo') {
             steps{
                 script{
                     
                 }
             }
-        } 
+        } */
     }
 }
