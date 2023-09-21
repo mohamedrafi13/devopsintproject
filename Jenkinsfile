@@ -15,7 +15,7 @@ pipeline {
                 }
             }
         }
-        stage('sonar quality check') {
+    /*    stage('sonar quality check') {
             agent {
                 docker {
                     image 'maven'
@@ -29,7 +29,7 @@ pipeline {
                 }
             }
         }
-    /*    stage('Quality gate Status') {
+        stage('Quality gate Status') {
             steps{
                 script{
                     waitForQualityGate abortPipeline: false, credentialsId: 'deekshithSN'
